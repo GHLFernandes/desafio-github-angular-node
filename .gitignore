@@ -1,0 +1,31 @@
+# Ignorar node_modules em backend e frontend
+/backend/node_modules/
+/frontend/node_modules/
+
+# Ignorar arquivos de log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar diretórios de build
+/backend/dist/
+/frontend/dist/
+/frontend/out-tsc/
+
+# Ignorar arquivos gerados pelo Angular
+/.angular/cache/
+
+# Ignorar arquivos de IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Ignorar arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar outros arquivos comuns
+.env
+.env.local
+.env.*.local
