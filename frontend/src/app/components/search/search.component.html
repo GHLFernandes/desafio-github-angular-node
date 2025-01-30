@@ -1,1 +1,48 @@
-<p>search works!</p>
+<div class="max-w-4xl mx-auto mt-6">
+  <form class="max-w-4xl mx-auto mt-6" (ngSubmit)="search()">
+    <h2 class="text-2xl font-bold text-center">Pesquisar Repositórios</h2>
+    <div class="text-center">
+      <input [(ngModel)]="query" name="query" required
+        placeholder="Digite o nome do repositório"
+        class="border border-gray-300 p-2 rounded-lg mt-4 w-1/2"
+      />
+      <button type="submit"
+        class="bg-blue-600 text-white px-4 py-2 mt-2 ml-2 rounded-lg hover:bg-blue-700"
+      >
+        Pesquisar
+      </button>
+    </div>
+  </form>
+  
+
+  <ul class="mt-4 grid grid-cols-2 gap-4">
+    <li *ngFor="let result of results" class="bg-gray-100 p-4 rounded-lg shadow-md flex flex-col h-full justify-between">
+      
+      <div>
+        <h3 class="text-xl font-bold">{{ result.name }}</h3>
+        <p class="text-gray-600 text-sm">{{ result.description || 'Sem descrição' }}</p>
+  
+        <div class="mt-2 text-sm text-gray-700">
+          <p><strong>Linguagem:</strong> {{ result.language || 'N/A' }}</p>
+          <p><strong>Última atualização:</strong> {{ result.updated_at | date:'short' }}</p>
+          <p><strong>Dono:</strong> {{ result.owner?.login }}</p>
+        </div>
+  
+        <div class="mt-4">
+          <strong>Contribuidores:</strong>
+          <ul class="list-disc list-inside text-sm text-gray-600">
+            <li *ngFor="let contributor of result.contributors">
+              {{ contributor.login }}
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <button (click)="addToFavorites(result.name)"
+        class="bg-green-600 text-white px-3 py-1 rounded-lg hover:bg-green-700 mt-6"
+      >
+        Favoritar
+      </button>
+    </li>
+  </ul>  
+</div>

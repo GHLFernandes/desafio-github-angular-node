@@ -11,8 +11,14 @@ const ensureFileExists = () => {
 
 const getFavorites = (): any[] => {
   ensureFileExists();
-  const data = fs.readFileSync(FILE_PATH, "utf-8");
-  return JSON.parse(data);
+  
+  try {
+    const data = fs.readFileSync(FILE_PATH, "utf-8");
+    return data ? JSON.parse(data) : [];
+  } catch (error) {
+    console.error("Erro ao ler arquivo JSON:", error);
+    return [];
+  }
 };
 
 const addFavorite = (name: string): void => {
@@ -27,4 +33,4 @@ const addFavorite = (name: string): void => {
   fs.writeFileSync(FILE_PATH, JSON.stringify(favorites, null, 2), "utf-8");
 };
 
-export { getFavorites, addFavorite }
+export { getFavorites, addFavorite };

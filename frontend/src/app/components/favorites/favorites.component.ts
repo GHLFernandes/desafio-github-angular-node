@@ -6,14 +6,9 @@ import { ApiService } from '../../services/api.service';
   selector: 'app-favorites',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <h2>Favoritos</h2>
-    <ul>
-      <li *ngFor="let favorite of favorites">{{ favorite.name }}</li>
-    </ul>
-  `,
-  styleUrls: ['./favorites.component.css'],
+  templateUrl: './favorites.component.html',
 })
+
 export class FavoritesComponent implements OnInit {
   favorites: any[] = [];
 

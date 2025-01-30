@@ -1,1 +1,30 @@
-<p>repositories works!</p>
+<div class="max-w-4xl mx-auto mt-6">
+  <h2 class="text-2xl font-bold text-center">Meus Repositórios</h2>
+
+  <p *ngIf="errorMessage" class="text-red-500 text-center mt-2">{{ errorMessage }}</p>
+
+  <ul class="mt-4 grid grid-cols-2 gap-4">
+    <li *ngFor="let repo of repositories" class="bg-gray-100 p-4 rounded-lg shadow-md flex flex-col h-full justify-between">
+      
+      <div>
+        <h3 class="text-xl font-bold">{{ repo.name }}</h3>
+        <p class="text-gray-600 text-sm">{{ repo.description || 'Sem descrição' }}</p>
+
+        <div class="mt-2 text-sm text-gray-700">
+          <p><strong>Linguagem:</strong> {{ repo.language || 'N/A' }}</p>
+          <p><strong>Última atualização:</strong> {{ repo.updated_at | date:'short' }}</p>
+          <p><strong>Dono:</strong> {{ repo.owner?.login }}</p>
+        </div>
+
+        <div class="mt-4">
+          <strong>Contribuidores:</strong>
+          <ul class="list-disc list-inside text-sm text-gray-600">
+            <li *ngFor="let contributor of repo.contributors">
+              {{ contributor.login }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>  
+</div>

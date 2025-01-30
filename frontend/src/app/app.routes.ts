@@ -5,7 +5,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: '/repositories', pathMatch: 'full' },
-  { path: 'repositories', component: RepositoriesComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'favorites', component: FavoritesComponent },
+  { path: 'meus-repositorios', component: RepositoriesComponent },
+  { path: 'busca', component: SearchComponent },
+  { path: 'favoritos', component: FavoritesComponent },
 ];

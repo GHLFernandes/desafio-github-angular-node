@@ -6,22 +6,22 @@ import { ApiService } from '../../services/api.service';
   selector: 'app-repositories',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <h2>Meus Repositórios</h2>
-    <ul>
-      <li *ngFor="let repo of repositories">{{ repo.name }}</li>
-    </ul>
-  `,
-  styleUrls: ['./repositories.component.css'],
+  templateUrl: './repositories.component.html',
 })
 export class RepositoriesComponent implements OnInit {
   repositories: any[] = [];
+  errorMessage: string = '';
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getMyRepos().subscribe((data) => {
-      this.repositories = data;
+    this.apiService.getMyRepos().subscribe({
+      next: (data) => {
+        this.repositories = data;
+      },
+      error: (error) => {
+        this.errorMessage = error.message;
+      },
     });
   }
 }
