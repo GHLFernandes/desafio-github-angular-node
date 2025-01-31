@@ -80,3 +80,36 @@ Após rodar o backend, acesse a documentação das APIs em:
 http://localhost:3000/api-docs
 
 Essa página contém todas as rotas disponíveis, métodos HTTP, parâmetros e exemplos de respostas.
+
+## Design Patterns
+
+A aplicação segue uma arquitetura bem estruturada com Node.js + Express + TypeScript no backend e Angular + Tailwind CSS no frontend, aplicando diversos padrões de projeto para organização, testabilidade e reutilização de código.
+
+### Backend (Node.js + Express)
+- Factory Pattern: Usado para gerenciar dependências, como a criação de uma instância única do Axios no gitHubService.ts.
+
+- Repository Pattern: Isola a lógica de acesso a dados, como no favoriteModel.ts, que gerencia a persistência em um JSON.
+
+- Singleton Pattern: O Express (app.ts) funciona como um singleton, garantindo uma única instância da aplicação.
+
+- Dependency Injection: Implementado no gitHubService.ts, facilitando testes e substituição de dependências.
+
+- Middleware Pattern: Middlewares aplicados globalmente para CORS, parsing de JSON e tratamento de erros.
+
+- Strategy Pattern: Diferentes estratégias usadas na busca de repositórios ou usuários no searchRepos.
+
+### Frontend (Angular + Tailwind CSS)
+
+- Component-Based Architecture: Aplicação modularizada em componentes reutilizáveis (search.component.ts, repositories.component.ts, favorites.component.ts).
+
+- Observer Pattern: Implementado via Observables (RxJS) no api.service.ts, permitindo reatividade.
+
+- Smart & Dumb Components: O ApiService gerencia os dados (Smart), enquanto componentes de UI são Dumb (apenas exibição).
+
+- Gerenciamento de Estado: Dados da API são centralizados no api.service.ts, reduzindo re-renderizações desnecessárias.
+
+### Testes
+
+- Mocking: Utilizado para testar serviços no backend com Jest e no frontend com Jasmine.
+
+- Spy Pattern: Verifica chamadas a métodos importantes, como toastr.success().

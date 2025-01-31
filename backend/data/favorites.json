@@ -7,5 +7,17 @@
   },
   {
     "name": "natives"
+  },
+  {
+    "name": "gpt4free"
+  },
+  {
+    "name": "GPTs"
+  },
+  {
+    "name": "AgentGPT"
+  },
+  {
+    "name": "MetaGPT"
   }
 ]
